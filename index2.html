@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery DOM Practice Part 2</title>
+</head>
+<body>
+    <div class="container">
+    <h1>jQuery DOM Practice Part 2</h1>
+    <form = "">
+        <label for="MovieTitle">Move Title:</label>
+        <input class="movietitle" type="text" placeholder="Movie Title">
+        <br>
+        <label for="Rating">Rating:</label>
+        <input class="movierating" type="number" min="0" max="10" placeholder="Rating">
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <ul>
+
+    </ul>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $('button').on("click", function(evt) {
+        evt.preventDefault();
+        if ($(".movietitle").val().length >= 2) {
+            let movietitle= $(".movietitle").val();
+            let movierating = $(".movierating").val();
+            $("ul").append("<li>" + movietitle + ", "+ movierating + "</li>").append("<button class=\"removeBtn\">Remove</button>")
+            $(".removeBtn").on("click", function(){
+                $(this).parent().remove(); //removes all of <li> elements and cannot add more through the form - why?; If .parent is not here, only the button is removed
+            });
+        }
+      })
+    </script>
+</body>
+</html>
